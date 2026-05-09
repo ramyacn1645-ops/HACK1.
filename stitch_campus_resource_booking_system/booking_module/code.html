@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusFlow | Reserve Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#2f486a",
+                        "surface": "#121316",
+                        "secondary-container": "#394857",
+                        "surface-container-high": "#292a2c",
+                        "surface-container": "#1f2022",
+                        "on-secondary-fixed": "#0d1d2a",
+                        "surface-variant": "#343537",
+                        "on-tertiary": "#003919",
+                        "on-error": "#690005",
+                        "inverse-primary": "#476083",
+                        "surface-bright": "#38393c",
+                        "tertiary-container": "#00250e",
+                        "on-surface-variant": "#c4c6cf",
+                        "on-secondary": "#223240",
+                        "surface-tint": "#afc8f0",
+                        "on-primary-fixed": "#001c3a",
+                        "primary-container": "#001f3f",
+                        "tertiary-fixed": "#83fba5",
+                        "tertiary-fixed-dim": "#66dd8b",
+                        "surface-container-highest": "#343537",
+                        "secondary": "#b8c8da",
+                        "secondary-fixed": "#d4e4f6",
+                        "primary-fixed-dim": "#afc8f0",
+                        "outline-variant": "#43474e",
+                        "surface-container-low": "#1a1c1e",
+                        "on-secondary-container": "#a7b7c8",
+                        "on-tertiary-fixed": "#00210c",
+                        "on-background": "#e3e2e5",
+                        "outline": "#8e9198",
+                        "on-secondary-fixed-variant": "#394857",
+                        "surface-dim": "#121316",
+                        "on-surface": "#e3e2e5",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0d0e11",
+                        "error-container": "#93000a",
+                        "background": "#121316",
+                        "tertiary": "#66dd8b",
+                        "on-tertiary-fixed-variant": "#005227",
+                        "on-tertiary-container": "#119b50",
+                        "inverse-on-surface": "#2f3033",
+                        "inverse-surface": "#e3e2e5",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#163152",
+                        "secondary-fixed-dim": "#b8c8da",
+                        "primary": "#afc8f0",
+                        "on-primary-container": "#6f88ad",
+                        "primary-fixed": "#d4e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-columns": "12",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-tablet": "24px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(31, 32, 34, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-card-stroke {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        .bg-gradient-mesh {
+            background-color: #121316;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(175, 200, 240, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(102, 221, 139, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(0, 31, 63, 0.3) 0px, transparent 50%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(175, 200, 240, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-mesh min-h-screen text-on-surface font-body-md overflow-x-hidden selection:bg-primary/30">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-surface-container/30 backdrop-blur-2xl border-r border-white/5 py-8 gap-4 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Smart Campus</h1>
+<p class="text-on-surface-variant font-label-md text-sm opacity-60">V2.0.4</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">search</span>
+<span class="font-label-md">Search</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary border-r-4 border-primary rounded-r-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-label-md">Reserve Space</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">history</span>
+<span class="font-label-md">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">account_circle</span>
+<span class="font-label-md">Profile</span>
+</a>
+</nav>
+<div class="px-4 mt-auto pt-8 border-t border-white/5 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined transition-transform duration-200 group-hover:translate-x-1">help</span>
+<span class="font-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error/5 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-40 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm shadow-primary/5">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">CampusFlow</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-white/5 rounded-full px-4 py-1.5 border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface placeholder:text-on-surface-variant/50 w-48" placeholder="Quick search..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary/20">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a young university student wearing modern business casual attire. The lighting is soft and cinematic with subtle blue and green highlights reflecting off a dark, polished background. The image has a high-end, sharp focus feel suitable for a premium educational platform profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1KpjNtej1TLoCyF5qDuKNIDtKfsrU4dx450pEvX09hwdRpeqeqv6u4tFLCKx_5N4A24xYX9M_3DbauB3UDentr48SCcmVAmmWC7PGamlgR1WLz88KQZH_f7CwqC9w8HujX6R0tqYUtVHJJxB78gdWLqhyk_rLz2uqJqdeb8MkHivhUPdYHyTdFkGkfOf06ms54A_O7sbkeMxsIn1qqNoQk0CxomSGMHIKYEzuY9HeSIj8FejP1IXKRCgDHcXzpnRATuiJq-bcdCNs"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-margin-mobile md:p-margin-desktop space-y-gutter flex-1">
+<div class="max-w-container-max mx-auto">
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Space Reservation</h2>
+<p class="text-on-surface-variant font-body-md">Book study rooms, labs, or lecture halls in seconds.</p>
+</div>
+<!-- Booking Module Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left: Form Steps (8 cols) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Step 1: Select Space & Date -->
+<section class="glass-panel rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">event</span>
+</div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm">1</div>
+<h3 class="font-headline-md text-headline-md">Select Date &amp; Venue</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<label class="block font-label-md text-on-surface-variant text-sm">Venue Type</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-primary bg-primary/10 text-primary transition-all">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-xs font-bold">Study Room</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-white/5 bg-white/5 text-on-surface-variant hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined">biotech</span>
+<span class="text-xs font-bold">Research Lab</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<label class="block font-label-md text-on-surface-variant text-sm">Date Picker</label>
+<div class="bg-surface-container-low rounded-xl p-4 border border-white/5">
+<div class="flex justify-between items-center mb-4">
+<span class="font-bold text-sm">October 2023</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary">chevron_left</span>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary">chevron_right</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-[10px] mb-2 text-on-surface-variant opacity-50">
+<span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-xs">
+<span class="p-1 opacity-20">28</span><span class="p-1 opacity-20">29</span><span class="p-1 opacity-20">30</span><span class="p-1">1</span><span class="p-1">2</span><span class="p-1">3</span><span class="p-1">4</span>
+<span class="p-1">5</span><span class="p-1">6</span><span class="p-1">7</span><span class="p-1">8</span><span class="p-1">9</span><span class="p-1">10</span><span class="p-1">11</span>
+<span class="p-1 bg-primary text-on-primary rounded-full font-bold">12</span><span class="p-1">13</span><span class="p-1">14</span><span class="p-1">15</span><span class="p-1">16</span><span class="p-1">17</span><span class="p-1">18</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 2: Time Slots -->
+<section class="glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm">2</div>
+<h3 class="font-headline-md text-headline-md">Choose Time Slot</h3>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+<button class="p-3 rounded-lg border border-white/10 bg-white/5 text-sm hover:border-tertiary hover:text-tertiary transition-all">09:00 AM</button>
+<button class="p-3 rounded-lg border border-white/10 bg-white/5 text-sm hover:border-tertiary hover:text-tertiary transition-all">10:30 AM</button>
+<button class="p-3 rounded-lg border border-tertiary bg-tertiary/10 text-tertiary text-sm font-bold">01:00 PM</button>
+<button class="p-3 rounded-lg border border-white/10 bg-white/5 text-sm hover:border-tertiary hover:text-tertiary transition-all">02:30 PM</button>
+<button class="p-3 rounded-lg border border-white/10 bg-white/5 text-sm hover:border-tertiary hover:text-tertiary transition-all opacity-40 cursor-not-allowed">04:00 PM</button>
+<button class="p-3 rounded-lg border border-white/10 bg-white/5 text-sm hover:border-tertiary hover:text-tertiary transition-all">05:30 PM</button>
+<button class="p-3 rounded-lg border border-white/10 bg-white/5 text-sm hover:border-tertiary hover:text-tertiary transition-all">07:00 PM</button>
+<button class="p-3 rounded-lg border border-white/10 bg-white/5 text-sm hover:border-tertiary hover:text-tertiary transition-all">08:30 PM</button>
+</div>
+<div class="mt-4 flex items-center gap-4 text-xs text-on-surface-variant">
+<div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary"></span> Selected</div>
+<div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-white/20"></span> Available</div>
+<div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-white/5 border border-white/10 opacity-40"></span> Reserved</div>
+</div>
+</section>
+<!-- Step 3: Purpose -->
+<section class="glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm">3</div>
+<h3 class="font-headline-md text-headline-md">Purpose of Booking</h3>
+</div>
+<div class="space-y-4">
+<div class="relative">
+<textarea class="w-full bg-surface-container-low border border-white/10 rounded-xl p-4 text-on-surface placeholder:text-on-surface-variant/30 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none" placeholder="Briefly describe your activity (e.g., 'Group study for Advanced Quantum Mechanics midterm')..." rows="4"></textarea>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase tracking-wider">Required</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<input class="rounded bg-surface-container border-white/10 text-primary focus:ring-primary" id="attendees" type="checkbox"/>
+<label class="text-sm text-on-surface-variant" for="attendees">Inviting external guests?</label>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right: Summary Card (4 cols) -->
+<div class="lg:col-span-4 sticky top-24">
+<div class="glass-panel rounded-xl p-6 border-primary/20 bg-primary-container/20">
+<h3 class="font-headline-md text-headline-md mb-6 flex items-center justify-between">
+                                    Booking Summary
+                                    <span class="material-symbols-outlined text-primary">receipt_long</span>
+</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-lg overflow-hidden border border-white/10">
+<img alt="Space Thumbnail" class="w-full h-full object-cover" data-alt="A futuristic interior view of a high-tech university study pod. The room features curved ergonomic glass desks, integrated digital displays on the walls, and atmospheric emerald green neon accent lighting. Large windows show a blurred campus landscape at dusk, creating a serene and focused academic environment with premium materials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTUi-gF99Lyusw7l7G3BG2SDXAFg1aE98dCt4ivSkGmRyX9lZY-KYuwHO8p9yHVL-KBImKQ8Pq4ZTYBve54JM-1ufO1VPBIEEhMTP1NyrzQP0nXMn4VfLSEKLgDIE3qQY0VT3qy9GLAmcWaKnHEqCOjDzZLjdm9Fp-5nrWsEAx58GQVU2yIfSlALyTjfOtcL3A9Qqfjj6hWnweDQX4mIg0DhF1sl2NLVm7BHcUwzPz9JLrWk6OlOXIshzCN6eqPH1GhTLdrjBwVR4g"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Alpha Study Pod 04</p>
+<p class="text-sm text-on-surface-variant">North Campus Library</p>
+<p class="text-xs text-primary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">group</span> Up to 6 people
+                                            </p>
+</div>
+</div>
+<div class="space-y-3 py-6 border-y border-white/5">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Date</span>
+<span class="font-medium">Oct 12, 2023</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Time</span>
+<span class="font-medium">01:00 PM - 02:30 PM</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Duration</span>
+<span class="font-medium">1.5 Hours</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="font-bold">Total Credits</span>
+<span class="text-headline-md font-bold text-primary">450 <span class="text-xs font-medium text-on-surface-variant">pts</span></span>
+</div>
+<button class="w-full py-4 bg-tertiary text-on-tertiary font-bold rounded-xl shadow-lg shadow-tertiary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group">
+                                            Confirm Booking
+                                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<p class="text-[10px] text-center text-on-surface-variant opacity-50 px-4">
+                                            By confirming, you agree to the Smart Campus fair-use policy and noise regulations.
+                                        </p>
+</div>
+</div>
+</div>
+<!-- Contextual Card -->
+<div class="mt-6 p-4 rounded-xl bg-white/5 border border-white/5 flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div class="text-xs">
+<p class="font-bold text-on-surface mb-1">Instant Confirmation</p>
+<p class="text-on-surface-variant leading-relaxed">This space supports auto-approval. You will receive your digital key immediately upon booking.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Instant Confirmation Modal (Overlay State) -->
+<!-- Shown by default for visual demonstration purposes as requested by prompt "pop up upon completion" -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-surface/90 backdrop-blur-md">
+<div class="glass-panel w-full max-w-md rounded-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="h-2 bg-gradient-to-r from-tertiary to-primary"></div>
+<div class="p-8 text-center">
+<div class="w-20 h-20 bg-tertiary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-2">Booking Confirmed!</h2>
+<p class="text-on-surface-variant mb-8">Your reservation for <span class="text-on-surface font-bold">Alpha Study Pod 04</span> is ready. A confirmation email has been sent to your university account.</p>
+<div class="bg-surface-container-high rounded-xl p-6 mb-8 text-left space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant uppercase tracking-widest font-bold">Digital Key</span>
+<span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded font-bold">ACTIVE</span>
+</div>
+<div class="flex justify-center py-4">
+<img alt="Digital Key QR" class="w-32 h-32 rounded-lg bg-white p-2" data-alt="A clean, high-contrast QR code rendered on a dark glass-morphic background with subtle blue glowing edges. The image is framed within a sophisticated digital interface that features data-stream accents and soft bokeh lighting in a futuristic academic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXD5eCraFZmDnqwe0lOyeVt_21S3LIhr9pDxAtv3wRjyvbMKQDrUV8YOPEf-qlT5KwzeVye0x8-q1BgtNbWuT7GaUXUqbiVgRKS0LbO3og0Mtj8g5LOAbg2N302SXxp5zoNaIY8unT8uKqEqK58rTRZuUTeBZF-CuR8egOCZ9RcPU__k24GW4zN2svgVL9QhGuA434pbUn06m7IE0iKGk9aC25eBuxOINoU2WflDBsEv7hPK6WQd-kK6WzRcfckhOCrTaypnSCWxWV"/>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold text-primary">Room Access Code: 88-42-01</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="py-3 px-4 bg-white/5 border border-white/10 rounded-xl font-bold text-sm hover:bg-white/10 transition-all">Add to Calendar</button>
+<button class="py-3 px-4 bg-primary text-on-primary rounded-xl font-bold text-sm shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">Done</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button (FAB) - Suppressed as per instructions for Details/Transactional screens, 
+         however if we consider this a dashboard action it might appear, but instructions say suppress on transactional -->
+</body></html>

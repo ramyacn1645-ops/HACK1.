@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease-out;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-2px);
+            border-color: rgba(175, 200, 240, 0.3);
+        }
+        body {
+            background: radial-gradient(circle at top right, #163152, #121316 40%),
+                        radial-gradient(circle at bottom left, #00250e, #121316 40%);
+            background-attachment: fixed;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#2f486a",
+                        "surface": "#121316",
+                        "secondary-container": "#394857",
+                        "surface-container-high": "#292a2c",
+                        "surface-container": "#1f2022",
+                        "on-secondary-fixed": "#0d1d2a",
+                        "surface-variant": "#343537",
+                        "on-tertiary": "#003919",
+                        "on-error": "#690005",
+                        "inverse-primary": "#476083",
+                        "surface-bright": "#38393c",
+                        "tertiary-container": "#00250e",
+                        "on-surface-variant": "#c4c6cf",
+                        "on-secondary": "#223240",
+                        "surface-tint": "#afc8f0",
+                        "on-primary-fixed": "#001c3a",
+                        "primary-container": "#001f3f",
+                        "tertiary-fixed": "#83fba5",
+                        "tertiary-fixed-dim": "#66dd8b",
+                        "surface-container-highest": "#343537",
+                        "secondary": "#b8c8da",
+                        "secondary-fixed": "#d4e4f6",
+                        "primary-fixed-dim": "#afc8f0",
+                        "outline-variant": "#43474e",
+                        "surface-container-low": "#1a1c1e",
+                        "on-secondary-container": "#a7b7c8",
+                        "on-tertiary-fixed": "#00210c",
+                        "on-background": "#e3e2e5",
+                        "outline": "#8e9198",
+                        "on-secondary-fixed-variant": "#394857",
+                        "surface-dim": "#121316",
+                        "on-surface": "#e3e2e5",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0d0e11",
+                        "error-container": "#93000a",
+                        "background": "#121316",
+                        "tertiary": "#66dd8b",
+                        "on-tertiary-fixed-variant": "#005227",
+                        "on-tertiary-container": "#119b50",
+                        "inverse-on-surface": "#2f3033",
+                        "inverse-surface": "#e3e2e5",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#163152",
+                        "secondary-fixed-dim": "#b8c8da",
+                        "primary": "#afc8f0",
+                        "on-primary-container": "#6f88ad",
+                        "primary-fixed": "#d4e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-columns": "12",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-tablet": "24px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm shadow-primary/5">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary">CampusFlow</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant font-medium hover:bg-white/5 hover:text-primary transition-all duration-200 px-3 py-1 rounded" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary px-3 py-1" href="#">Search</a>
+<a class="text-on-surface-variant font-medium hover:bg-white/5 hover:text-primary transition-all duration-200 px-3 py-1 rounded" href="#">History</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">settings</span></button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md active:scale-95 transition-transform">Book Now</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/20">
+<img alt="User profile photo" data-alt="A professional close-up portrait of a university student with a friendly expression, captured in soft, cinematic lighting within a modern campus environment. The background is softly blurred to emphasize the subject, featuring warm wooden textures and cool blue accents that align with a futuristic academic aesthetic. High-quality digital photography with natural skin tones and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqIIdTsIDujml3_hxHf2a5dHnyBdbuixx6h8NaGWrCsT_8xFBOXTlekfe-tv9xxWTzJknbrtEsrhKTDmWmLObqQ2U4NhjiqQy-PCx-avnzi3vQCdaxYNOJGHh3Nw-IzJ8GperhQl9a-n8m2CzwImUQgpuouYKfLpjK102cQ-fHng_vFbccs7N-ddXH-Tjh03AdEH12CDrBIOCliHUQdeQWCHAZUxRVEKMO5nTlQ6_kK8ikLnYLvMlTXNnal0AbmLoHgltoBZpRvxuc"/>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky py-8 gap-4 bg-surface-container/30 backdrop-blur-2xl border-r border-white/5 shadow-xl shadow-surface-container-lowest/50">
+<div class="px-6 mb-8">
+<h2 class="font-headline-md text-headline-md font-extrabold text-primary">Smart Campus</h2>
+<p class="text-on-surface-variant text-sm opacity-60">V2.0.4</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 bg-primary/10 text-primary border-r-4 border-primary rounded-r-lg" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Admin</span>
+</a>
+</nav>
+<div class="mt-auto px-6 flex flex-col gap-1">
+<button class="mb-4 bg-tertiary/10 text-tertiary border border-tertiary/30 py-3 rounded-xl font-label-md text-label-md hover:bg-tertiary/20 transition-all">Reserve Space</button>
+<a class="flex items-center gap-4 py-3 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-4 py-3 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-10">
+<div class="max-w-container-max mx-auto">
+<header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Resource Search</h1>
+<p class="text-on-surface-variant text-body-lg">Find and reserve state-of-the-art academic spaces instantly.</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-xl border border-white/5">
+<button class="px-4 py-2 bg-primary/20 text-primary rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-label-md font-label-md">Grid</span>
+</button>
+<button class="px-4 py-2 text-on-surface-variant hover:text-on-surface rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined">list</span>
+<span class="text-label-md font-label-md">List</span>
+</button>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Interactive Filter Sidebar -->
+<aside class="w-full lg:w-80 flex-shrink-0">
+<div class="glass-card p-6 rounded-2xl sticky top-20">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Filters</h3>
+<div class="space-y-6">
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Search by Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest/50 border border-white/10 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:border-primary focus:ring-0 outline-none transition-all" placeholder="e.g. Lab 402" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-3 text-on-surface-variant">search</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Building</label>
+<select class="w-full bg-surface-container-highest/50 border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 outline-none appearance-none cursor-pointer">
+<option>All Buildings</option>
+<option>Engineering Hall</option>
+<option>Digital Arts Center</option>
+<option>Science Plaza</option>
+<option>Innovation Lab</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Capacity</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="px-3 py-2 border border-white/10 rounded-lg text-label-md hover:border-primary transition-colors">1-5 Persons</button>
+<button class="px-3 py-2 border border-primary bg-primary/10 text-primary rounded-lg text-label-md">6-12 Persons</button>
+<button class="px-3 py-2 border border-white/10 rounded-lg text-label-md hover:border-primary transition-colors">13-30 Persons</button>
+<button class="px-3 py-2 border border-white/10 rounded-lg text-label-md hover:border-primary transition-colors">30+ Persons</button>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Date &amp; Time</label>
+<div class="space-y-3">
+<div class="relative">
+<input class="w-full bg-surface-container-highest/50 border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 outline-none" type="date"/>
+</div>
+<div class="relative">
+<select class="w-full bg-surface-container-highest/50 border border-white/10 rounded-xl px-4 py-3 text-on-surface focus:border-primary focus:ring-0 outline-none">
+<option>All Time Slots</option>
+<option>08:00 - 10:00</option>
+<option>10:00 - 12:00</option>
+<option>13:00 - 15:00</option>
+<option>15:00 - 17:00</option>
+</select>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-headline-md text-headline-md font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95">Apply Filters</button>
+<button class="w-full text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors">Reset All</button>
+</div>
+</div>
+</aside>
+<!-- Results Area (Bento-style Grid) -->
+<div class="flex-1">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative h-48">
+<img alt="Innovation Lab Space" class="w-full h-full object-cover" data-alt="A hyper-modern, glass-walled innovation lab within a high-tech university campus. The room features ergonomic furniture, multiple large OLED display monitors showing complex data visualizations, and minimalist white workbenches. The lighting is cool-toned and futuristic, with subtle emerald green glowing accents from LED strips integrated into the ceiling panels. High-end architectural photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeJbGrKGGXAryaNHwm_AgXcLrFkSNMWVk3cU41Qua7wYUcQHxo2Eg-l62FpCUpCxGe0ho4_rICCJJd7xot5atuAnrjVvAnlPTau4ZB5Py8TRYgi_sBniTpOeDy2GTSTzQ7r3stBXlN6CGqUBDoXZqEAW_8ejea4H6uaHkbPu-Wbxv-7idzg3NggG-NyXo9ieGZh96vUqENtgqRhetPF508GEilMqpULjSw85EWVSjyz7jKSheB91uxt_t6zw4C1dvdt3I2T_lCqeKZ"/>
+<div class="absolute top-4 right-4 bg-tertiary/10 backdrop-blur-md border border-tertiary/30 px-3 py-1 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+<span class="text-tertiary font-label-md text-xs">Available Now</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Quantum Computing Lab</h3>
+<p class="text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span>Innovation Center, Fl 4</p>
+</div>
+<div class="text-right">
+<span class="block text-primary font-bold text-lg">$25/hr</span>
+<span class="text-xs text-on-surface-variant">Credits available</span>
+</div>
+</div>
+<div class="flex gap-4 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span class="text-xs">12 Capacity</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">videocam</span>
+<span class="text-xs">AV Ready</span>
+</div>
+</div>
+<button class="w-full py-3 border border-white/10 rounded-xl font-label-md hover:bg-primary hover:text-on-primary hover:border-primary transition-all">Quick Book</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative h-48">
+<img alt="Study Pod" data-alt="A sleek, soundproof private study pod made of brushed aluminum and tinted glass, located in a vast contemporary campus library. The interior shows a soft gold light illuminating a minimalist desk and comfortable seating. The overall atmosphere is focused and premium, with a deep navy and charcoal color palette highlighted by warm atmospheric glow. Professional studio lighting style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbwg_Xw9zrQVtiH6jTp5_KrSR5gCE214PycKVa_1GmGlydd6N30WR7Py5css6qbwsItgIw_Wn89leXPQoxJyfGeuaDIasd095nZ094i5zTtaNIq9GkOo2vtcA2NgM9by2DN5CQx6k2OBKVNQ4ZxyWrBqTqk-R2X41GxP5VU7sl0J--p_5F5d5aMxCzexshV8OgbRi76ah9fBF8rDe2EHS_zXTZDhuV6mhrekhEPMYTyOSD1GIx7ZcaRTjS7wMQ7JrFI_Z97elph0jh"/>
+<div class="absolute top-4 right-4 bg-error/10 backdrop-blur-md border border-error/30 px-3 py-1 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="text-error font-label-md text-xs">Occupied until 2PM</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Zenith Focus Pod 08</h3>
+<p class="text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span>Central Library, North Wing</p>
+</div>
+<div class="text-right">
+<span class="block text-primary font-bold text-lg">Free</span>
+<span class="text-xs text-on-surface-variant">Student Tier</span>
+</div>
+</div>
+<div class="flex gap-4 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span class="text-xs">1 Capacity</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="text-xs">Charging</span>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-variant text-on-surface-variant rounded-xl font-label-md cursor-not-allowed">Waitlist Entry</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative h-48">
+<img alt="Collaborative Suite" data-alt="A spacious and elegant collaborative boardroom suite featuring a long polished dark wood table and high-back navy leather chairs. The room is surrounded by floor-to-ceiling windows looking out onto a lush campus landscape at twilight. The lighting is a sophisticated mix of warm recessed spotlights and the cool blue glow from an interactive whiteboard. Ultra-premium architectural rendering aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBozROkmXnkAntCgU18yH77hCs2dyUmCviR9L7ihWN3fnJ74St5gW4pheJlpZkjEKDNEfyi73RB5cZr5I8HaDgLnLO_NtAQsh55qcHaBAuZTQgW3qXTLuKOdZbWIcMLkAqjW9XQbxH1RQ0q6EiWc4q8pFXvuowDw-1AhhyVBOaNXMJqKIZaJ1n0Fj6qxo8cqr70wA8Nq1MpiOqfBwb96ZDQc0Lzis8-hef8bhSeyGxqyZnkDW6snDCxYGaaRlEad4qu5EE-aIh35IlW"/>
+<div class="absolute top-4 right-4 bg-tertiary/10 backdrop-blur-md border border-tertiary/30 px-3 py-1 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+<span class="text-tertiary font-label-md text-xs">Available Now</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Boardroom 12A</h3>
+<p class="text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span>Business School, Fl 2</p>
+</div>
+<div class="text-right">
+<span class="block text-primary font-bold text-lg">$40/hr</span>
+<span class="text-xs text-on-surface-variant">Premium Space</span>
+</div>
+</div>
+<div class="flex gap-4 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span class="text-xs">25 Capacity</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="text-xs">6E Network</span>
+</div>
+</div>
+<button class="w-full py-3 border border-white/10 rounded-xl font-label-md hover:bg-primary hover:text-on-primary hover:border-primary transition-all">Quick Book</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative h-48">
+<img alt="Design Studio" data-alt="A vibrant and creative design studio space with large drafting tables, colorful ergonomic chairs, and wall-mounted pegboards holding various prototyping tools. The studio is illuminated by bright, diffused sunlight coming through large skylights. The design aesthetic is modern and playful, with a crisp white base color and splashes of emerald green and gold. Energetic and inspiring creative workspace photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXwFUYTkPfH4yYvnmeHcaS2_xtDG0ke_6QyL4cfC8f6PE9mcfZbBbK0MTwLYouBOY_8ezBUMW4MT-idbnOfTPybUpWVsk_uUQ2hdPMgGc78-o8Jsa1NWyhsSX10LZ-Bn4ZySf4HtfWtfrfghZPZp39sfVh7PMqNKz8n23CvvG-6lmRqgbiBUEaA5lWx1dYvPvUbNXJvG9MHU-jgL6QdIQZC3EqOF_dkZHfR8yd_ifbw9MHdW_0thhrjRohdAaRRwKK_sweT2Zb4jW5"/>
+<div class="absolute top-4 right-4 bg-tertiary/10 backdrop-blur-md border border-tertiary/30 px-3 py-1 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></div>
+<span class="text-tertiary font-label-md text-xs">Available Now</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Creative Studio B</h3>
+<p class="text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span>Arts Wing, Studio Row</p>
+</div>
+<div class="text-right">
+<span class="block text-primary font-bold text-lg">$15/hr</span>
+<span class="text-xs text-on-surface-variant">Material fee incl.</span>
+</div>
+</div>
+<div class="flex gap-4 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span class="text-xs">8 Capacity</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant bg-white/5 px-3 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm">draw</span>
+<span class="text-xs">Prototyping</span>
+</div>
+</div>
+<button class="w-full py-3 border border-white/10 rounded-xl font-label-md hover:bg-primary hover:text-on-primary hover:border-primary transition-all">Quick Book</button>
+</div>
+</div>
+</div>
+<!-- Pagination (Modern Style) -->
+<div class="mt-12 flex justify-center items-center gap-2">
+<button class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">2</button>
+<button class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">3</button>
+<span class="mx-2 text-on-surface-variant">...</span>
+<button class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">12</button>
+<button class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile FAB (Only on Search Intent) -->
+<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50">
+<span class="material-symbols-outlined">add</span>
+</button>
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-surface-container/80 backdrop-blur-xl flex justify-around items-center border-t border-white/5 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-md">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-label-md">Explore</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-label-md">My Walks</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-label-md">Profile</span>
+</button>
+</nav>
+</body></html>

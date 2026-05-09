@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications | CampusFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface": "#121316",
+                      "secondary-container": "#394857",
+                      "surface-container-high": "#292a2c",
+                      "surface-container": "#1f2022",
+                      "on-secondary-fixed": "#0d1d2a",
+                      "surface-variant": "#343537",
+                      "on-tertiary": "#003919",
+                      "on-error": "#690005",
+                      "inverse-primary": "#476083",
+                      "surface-bright": "#38393c",
+                      "tertiary-container": "#00250e",
+                      "on-surface-variant": "#c4c6cf",
+                      "on-secondary": "#223240",
+                      "surface-tint": "#afc8f0",
+                      "on-primary-fixed": "#001c3a",
+                      "primary-container": "#001f3f",
+                      "tertiary-fixed": "#83fba5",
+                      "tertiary-fixed-dim": "#66dd8b",
+                      "surface-container-highest": "#343537",
+                      "secondary": "#b8c8da",
+                      "secondary-fixed": "#d4e4f6",
+                      "primary-fixed-dim": "#afc8f0",
+                      "outline-variant": "#43474e",
+                      "surface-container-low": "#1a1c1e",
+                      "on-secondary-container": "#a7b7c8",
+                      "on-tertiary-fixed": "#00210c",
+                      "on-background": "#e3e2e5",
+                      "outline": "#8e9198",
+                      "on-secondary-fixed-variant": "#394857",
+                      "surface-dim": "#121316",
+                      "on-surface": "#e3e2e5",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0d0e11",
+                      "error-container": "#93000a",
+                      "background": "#121316",
+                      "tertiary": "#66dd8b",
+                      "on-tertiary-fixed-variant": "#005227",
+                      "on-tertiary-container": "#119b50",
+                      "inverse-on-surface": "#2f3033",
+                      "inverse-surface": "#e3e2e5",
+                      "on-error-container": "#ffdad6",
+                      "on-primary": "#163152",
+                      "secondary-fixed-dim": "#b8c8da",
+                      "primary": "#afc8f0",
+                      "on-primary-container": "#6f88ad",
+                      "primary-fixed": "#d4e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid-columns": "12",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "margin-tablet": "24px",
+                      "container-max": "1440px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Montserrat"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Montserrat"],
+                      "display-lg": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Montserrat"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(31, 32, 34, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 200ms ease-out;
+        }
+        .glass-card:hover {
+            transform: scale(1.01);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(175, 200, 240, 0.3);
+        }
+        .bg-atmosphere {
+            background: radial-gradient(circle at 10% 10%, rgba(175, 200, 240, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, rgba(102, 221, 139, 0.05) 0%, transparent 40%),
+                        #121316;
+        }
+    </style>
+</head>
+<body class="bg-atmosphere text-on-surface min-h-screen flex">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-surface-container/30 backdrop-blur-2xl border-r border-white/5 py-8 gap-4 shadow-xl shadow-surface-container-lowest/50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Smart Campus</h1>
+<p class="text-on-surface-variant font-label-md text-label-md opacity-60">V2.0.4</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-body-md text-body-md">Search</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">History</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-body-md text-body-md">Admin</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 bg-primary/10 text-primary border border-primary/20 rounded-lg font-label-md text-label-md hover:bg-primary/20 transition-all">
+                Reserve Space
+            </button>
+</div>
+<div class="px-6 pt-4 border-t border-white/5 flex flex-col gap-2">
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-16 sticky top-0 z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm shadow-primary/5">
+<div class="flex items-center gap-8">
+<div class="font-headline-md text-headline-md font-bold text-primary">CampusFlow</div>
+<div class="hidden lg:flex items-center bg-white/5 rounded-full px-4 py-1.5 border border-white/10">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-64 placeholder:text-on-surface-variant/50" placeholder="Search notifications..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex gap-4">
+<button class="material-symbols-outlined text-primary p-2 rounded-full bg-primary/10 border-b-2 border-primary" data-weight="fill">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-full transition-all">settings</button>
+</div>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:brightness-110 active:scale-95 transition-all">Book Now</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a university student in a modern setting. The lighting is bright and airy, with a focus on a clear, high-resolution aesthetic that fits a premium software dashboard. The background is softly blurred to emphasize the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFgOI8qUHg2kggLK3XejbrcDPXtZpK_7g2WVCz3lGwfju3q7MURLmlrCTWWeD9r4DwatcC5OnmaFcyqHh4qptlmjLtYj_zUT37Kggz4gfUjeh1J5AfTVLWkVA5MrQdWF6NexGS67Un6Vg4mt4MyKR01Dv6NvviG1lyMSa2o7I6FBNP8jBmZBduZQsBgLgJYO_yjAliFkVx8_3cXmkMLsSXhBSpzMaSNZa2wY1xxsCtnKzlTNjUyR1a8VQmozTw3FUfgpg-kEGxyRVv"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="p-margin-mobile md:p-margin-desktop max-w-5xl mx-auto w-full">
+<header class="mb-10">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Notification Center</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Stay updated with your campus activities and schedule changes.</p>
+</header>
+<!-- Categories Tabs -->
+<div class="flex flex-wrap gap-3 mb-8">
+<button class="px-6 py-2 bg-primary/20 text-primary border border-primary/30 rounded-full font-label-md text-label-md transition-all">All Activities</button>
+<button class="px-6 py-2 bg-surface-container hover:bg-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md transition-all">Alerts</button>
+<button class="px-6 py-2 bg-surface-container hover:bg-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md transition-all">Approvals</button>
+<button class="px-6 py-2 bg-surface-container hover:bg-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md transition-all">Reminders</button>
+<button class="px-6 py-2 bg-surface-container hover:bg-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md transition-all">Cancellations</button>
+</div>
+<!-- Notifications Feed -->
+<div class="space-y-4">
+<!-- Alert Notification -->
+<div class="glass-card p-6 rounded-xl flex items-start gap-5">
+<div class="w-12 h-12 rounded-lg bg-error/10 border border-error/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error" data-weight="fill">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-error px-2 py-0.5 bg-error/10 rounded-full">Alert</span>
+<span class="text-on-surface-variant text-xs font-medium">10 mins ago</span>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface mb-1">Unusual Energy Usage Detected</h3>
+<p class="text-on-surface-variant text-sm font-body-md mb-4 leading-relaxed">The Innovation Hub (Room 402) has exceeded its scheduled power consumption threshold. Please verify active equipment.</p>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-[12px] hover:brightness-110">View Details</button>
+<button class="px-4 py-2 bg-white/5 text-on-surface rounded-lg font-label-md text-[12px] border border-white/10 hover:bg-white/10">Dismiss</button>
+</div>
+</div>
+</div>
+<!-- Approval Notification -->
+<div class="glass-card p-6 rounded-xl flex items-start gap-5">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 border border-tertiary/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary">verified_user</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-tertiary px-2 py-0.5 bg-tertiary/10 rounded-full">Approvals</span>
+<span class="text-on-surface-variant text-xs font-medium">2 hours ago</span>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface mb-1">Conference Room Booked</h3>
+<p class="text-on-surface-variant text-sm font-body-md mb-4 leading-relaxed">Your request for the Global Strategy Meeting in Hall B has been approved by the Administration Office.</p>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-[12px] hover:brightness-110">Add to Calendar</button>
+</div>
+</div>
+</div>
+<!-- Reminder Notification -->
+<div class="glass-card p-6 rounded-xl flex items-start gap-5">
+<div class="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-primary px-2 py-0.5 bg-primary/10 rounded-full">Reminders</span>
+<span class="text-on-surface-variant text-xs font-medium">Yesterday</span>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface mb-1">Upcoming Thesis Defense</h3>
+<p class="text-on-surface-variant text-sm font-body-md mb-4 leading-relaxed">Reminder: You have a scheduled thesis defense session in the Academic Center tomorrow at 10:00 AM.</p>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-[12px] hover:brightness-110">View Details</button>
+</div>
+</div>
+</div>
+<!-- Cancellation Notification -->
+<div class="glass-card p-6 rounded-xl flex items-start gap-5">
+<div class="w-12 h-12 rounded-lg bg-error-container/20 border border-error-container/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error">event_busy</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-error px-2 py-0.5 bg-error/10 rounded-full">Cancellations</span>
+<span class="text-on-surface-variant text-xs font-medium">2 days ago</span>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface mb-1">Maintenance: Pool Area Closed</h3>
+<p class="text-on-surface-variant text-sm font-body-md mb-4 leading-relaxed">The evening swim session has been cancelled due to scheduled maintenance. It will resume on Friday.</p>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-white/5 text-on-surface rounded-lg font-label-md text-[12px] border border-white/10 hover:bg-white/10">Reschedule</button>
+</div>
+</div>
+</div>
+<!-- Bento Style Secondary Feed -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+<div class="glass-card p-6 rounded-xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary">trending_up</span>
+<h4 class="font-headline-md text-headline-md">Weekly Summary</h4>
+</div>
+<div class="h-32 w-full bg-white/5 rounded-lg border border-white/10 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<img alt="Data visualization graph" class="w-full h-full object-cover" data-alt="A sophisticated data visualization dashboard showing sleek, glowing line charts and geometric data points. The aesthetic is futuristic and technical, using a palette of deep navy and bright emerald green. Soft blurs and translucent layers create a high-tech, glassmorphic feel that suggests intelligent analytics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa3VJ7V0u-BDuP0LUUIUNuvQaSJcx2VaXxAuMHRxhW3RVn6AcQxFeVcbkSKQFLs0Qqm3Kx5JDqf5KtgVAWHqKTnHCqxWh5TAKKJmgm4KMaf457GPZfIYT6TmgbwumFP8a7ntSkSBM5OUr-l3cM_-fppsQVnb3PWMxZ2wjE88JipVGEPTGfu3qYsjk8JzxDE6CaSCQz5X7HmryaHG3zfr02TVrOrokHRLgH4yIvPImY3KdGOP66bFv9XyGsduA9HtOAGx_bdxy2G9Y4"/>
+</div>
+<span class="text-on-surface-variant font-label-md text-label-md z-10">Usage up 14% this week</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex flex-col justify-between">
+<div>
+<h4 class="font-headline-md text-headline-md mb-2">Notification Settings</h4>
+<p class="text-on-surface-variant text-sm mb-4">Manage how you receive alerts and reminders on your devices.</p>
+</div>
+<button class="w-full py-2 bg-primary/10 text-primary border border-primary/20 rounded-lg font-label-md text-label-md hover:bg-primary/20 transition-all">Configure Alerts</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 glass-panel border-t border-white/5 flex items-center justify-around px-4 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-md uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-label-md uppercase">Search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-weight="fill">notifications</span>
+<span class="text-[10px] font-label-md uppercase">Alerts</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-label-md uppercase">Profile</span>
+</button>
+</nav>
+</body></html>

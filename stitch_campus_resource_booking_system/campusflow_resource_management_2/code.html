@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #121316;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-card-edge {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface": "#121316",
+                      "secondary-container": "#394857",
+                      "surface-container-high": "#292a2c",
+                      "surface-container": "#1f2022",
+                      "on-secondary-fixed": "#0d1d2a",
+                      "surface-variant": "#343537",
+                      "on-tertiary": "#003919",
+                      "on-error": "#690005",
+                      "inverse-primary": "#476083",
+                      "surface-bright": "#38393c",
+                      "tertiary-container": "#00250e",
+                      "on-surface-variant": "#c4c6cf",
+                      "on-secondary": "#223240",
+                      "surface-tint": "#afc8f0",
+                      "on-primary-fixed": "#001c3a",
+                      "primary-container": "#001f3f",
+                      "tertiary-fixed": "#83fba5",
+                      "tertiary-fixed-dim": "#66dd8b",
+                      "surface-container-highest": "#343537",
+                      "secondary": "#b8c8da",
+                      "secondary-fixed": "#d4e4f6",
+                      "primary-fixed-dim": "#afc8f0",
+                      "outline-variant": "#43474e",
+                      "surface-container-low": "#1a1c1e",
+                      "on-secondary-container": "#a7b7c8",
+                      "on-tertiary-fixed": "#00210c",
+                      "on-background": "#e3e2e5",
+                      "outline": "#8e9198",
+                      "on-secondary-fixed-variant": "#394857",
+                      "surface-dim": "#121316",
+                      "on-surface": "#e3e2e5",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0d0e11",
+                      "error-container": "#93000a",
+                      "background": "#121316",
+                      "tertiary": "#66dd8b",
+                      "on-tertiary-fixed-variant": "#005227",
+                      "on-tertiary-container": "#119b50",
+                      "inverse-on-surface": "#2f3033",
+                      "inverse-surface": "#e3e2e5",
+                      "on-error-container": "#ffdad6",
+                      "on-primary": "#163152",
+                      "secondary-fixed-dim": "#b8c8da",
+                      "primary": "#afc8f0",
+                      "on-primary-container": "#6f88ad",
+                      "primary-fixed": "#d4e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid-columns": "12",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "margin-tablet": "24px",
+                      "container-max": "1440px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Montserrat"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Montserrat"],
+                      "display-lg": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Montserrat"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen relative overflow-hidden flex flex-col items-center justify-center font-body-md text-body-md">
+<!-- Atmospheric Background Layers -->
+<div class="fixed inset-0 z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/20 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-tertiary/10 blur-[100px]"></div>
+<div class="absolute top-[30%] right-[10%] w-[30%] h-[30%] rounded-full bg-secondary/10 blur-[80px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-container-max px-margin-mobile md:px-margin-desktop flex flex-col items-center">
+<!-- Hero Section -->
+<div class="w-full flex flex-col items-center text-center space-y-8 py-12">
+<!-- Branding Header (Suppressed Nav Shell as per Task Intent) -->
+<div class="flex items-center gap-3 mb-4 animate-fade-in">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">Notification</span>
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">CampusFlow</h1>
+</div>
+<!-- Tagline and Description -->
+<div class="max-w-3xl space-y-4">
+<h2 class="font-display-lg text-display-lg text-on-surface leading-tight">
+                    Redefining Campus Resource Management
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Experience the future of academic efficiency. A premium workspace for students and faculty to synchronize schedules, labs, and collaborative zones in real-time.
+                </p>
+</div>
+<!-- Interactive Splash Card (Bento-style Glass Panel) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full mt-12">
+<!-- Left Feature Card -->
+<div class="md:col-span-7 glass-card rounded-xl p-8 flex flex-col justify-between items-start text-left group hover:scale-[1.01] transition-all duration-300 relative overflow-hidden">
+<div class="absolute inset-0 glass-card-edge pointer-events-none"></div>
+<div class="mb-12">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary/10 text-tertiary font-label-md text-label-md mb-6">
+                            V2.0.4 LIVE
+                        </span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Smart Allocation Engine</h3>
+<p class="text-on-surface-variant max-w-md">Our neural scheduling algorithms ensure every laboratory and study pod is utilized to its maximum potential, reducing conflicts by 94%.</p>
+</div>
+<div class="w-full h-48 rounded-lg overflow-hidden bg-surface-container-low border border-white/5 relative">
+<img class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-alt="A futuristic university library interior with sleek glass partitions and soft emerald lighting. Digital displays are integrated into the minimalist wooden tables, reflecting a clean, high-tech academic environment. The atmosphere is quiet, focused, and illuminated by a cool, blue-tinted natural light from large windows. The overall aesthetic is one of prestige and cutting-edge technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW6vu8D4bCDMi-vAX7ozpbpf34dLj5CSpPmW0HZytsRIzpsz_emYQcWBGsPj21NIdfi1QEW1QALTTsBfkKTLvtCrtmRG1tMDRn7Zw7Ck6ZCM_wwZ9kyacNZX9kbpKcbpTzMDm_yWGoprHxr0NqpDIZ1uAXXiyx7UZxtBVziMbGyixm1fmyljPnHSIBmEq6YhiA57IIhoEtKLBnRtQAV0q2cYCr8NzvJqNYV7VbLLTxLVd6yRkRV3PoBbPxr-WcHCBPsGcL07WZUZ0U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+</div>
+<!-- Right Feature Cards (Stacked) -->
+<div class="md:col-span-5 flex flex-col gap-6">
+<!-- Top Small Card -->
+<div class="glass-card rounded-xl p-6 flex flex-col gap-4 hover:bg-white/5 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Unified Calendar</h4>
+<p class="text-on-surface-variant text-sm">Sync with your existing stack</p>
+</div>
+</div>
+</div>
+<!-- Bottom Medium Card with CTA -->
+<div class="flex-grow glass-card rounded-xl p-8 flex flex-col justify-center items-center text-center space-y-6 relative group border-primary/20 bg-primary/5">
+<div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Ready to elevate?</h4>
+<p class="text-on-surface-variant text-sm">Join over 15,000 students and faculty transforming their daily workflow today.</p>
+<button class="w-full py-4 px-8 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center justify-center gap-2">
+                            Get Started
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Social/Trust Section -->
+<div class="mt-20 flex flex-col items-center space-y-6">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest opacity-60">Trusted by Global Institutions</p>
+<div class="flex flex-wrap justify-center gap-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">IVY</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl">science</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">TECH-U</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl">school</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">GLOBAL ACADEMY</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="mt-auto w-full py-8 relative z-10 flex justify-center border-t border-white/5 bg-surface/40 backdrop-blur-md">
+<div class="max-w-container-max w-full px-margin-desktop flex flex-col md:flex-row justify-between items-center text-on-surface-variant text-sm gap-4">
+<p>© 2024 CampusFlow Systems. Built for the Next Generation.</p>
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Infrastructure</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<!-- Decorative Blurs for Floating Effect -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-screen pointer-events-none opacity-30">
+<div class="absolute top-[20%] left-[15%] w-96 h-96 bg-primary rounded-full blur-[150px]"></div>
+<div class="absolute bottom-[20%] right-[15%] w-96 h-96 bg-tertiary rounded-full blur-[150px]"></div>
+</div>
+</body></html>

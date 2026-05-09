@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusFlow | User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#2f486a",
+                    "surface": "#121316",
+                    "secondary-container": "#394857",
+                    "surface-container-high": "#292a2c",
+                    "surface-container": "#1f2022",
+                    "on-secondary-fixed": "#0d1d2a",
+                    "surface-variant": "#343537",
+                    "on-tertiary": "#003919",
+                    "on-error": "#690005",
+                    "inverse-primary": "#476083",
+                    "surface-bright": "#38393c",
+                    "tertiary-container": "#00250e",
+                    "on-surface-variant": "#c4c6cf",
+                    "on-secondary": "#223240",
+                    "surface-tint": "#afc8f0",
+                    "on-primary-fixed": "#001c3a",
+                    "primary-container": "#001f3f",
+                    "tertiary-fixed": "#83fba5",
+                    "tertiary-fixed-dim": "#66dd8b",
+                    "surface-container-highest": "#343537",
+                    "secondary": "#b8c8da",
+                    "secondary-fixed": "#d4e4f6",
+                    "primary-fixed-dim": "#afc8f0",
+                    "outline-variant": "#43474e",
+                    "surface-container-low": "#1a1c1e",
+                    "on-secondary-container": "#a7b7c8",
+                    "on-tertiary-fixed": "#00210c",
+                    "on-background": "#e3e2e5",
+                    "outline": "#8e9198",
+                    "on-secondary-fixed-variant": "#394857",
+                    "surface-dim": "#121316",
+                    "on-surface": "#e3e2e5",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#0d0e11",
+                    "error-container": "#93000a",
+                    "background": "#121316",
+                    "tertiary": "#66dd8b",
+                    "on-tertiary-fixed-variant": "#005227",
+                    "on-tertiary-container": "#119b50",
+                    "inverse-on-surface": "#2f3033",
+                    "inverse-surface": "#e3e2e5",
+                    "on-error-container": "#ffdad6",
+                    "on-primary": "#163152",
+                    "secondary-fixed-dim": "#b8c8da",
+                    "primary": "#afc8f0",
+                    "on-primary-container": "#6f88ad",
+                    "primary-fixed": "#d4e3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "grid-columns": "12",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "margin-tablet": "24px",
+                    "container-max": "1440px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(31, 32, 34, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease-out;
+        }
+        .glass-card:hover {
+            background: rgba(31, 32, 34, 0.6);
+            transform: translateY(-2px);
+            border-color: rgba(175, 200, 240, 0.3);
+        }
+        .glow-emerald {
+            filter: drop-shadow(0 0 8px rgba(102, 221, 139, 0.4));
+        }
+        .bg-gradient-mesh {
+            background: radial-gradient(circle at 0% 0%, #001f3f 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, #119b50 0%, transparent 50%),
+                        #121316;
+        }
+    </style>
+</head>
+<body class="bg-gradient-mesh text-on-surface min-h-screen selection:bg-primary/30">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-surface-container/30 backdrop-blur-2xl border-r border-white/5 py-8 gap-4 shadow-xl shadow-surface-container-lowest/50 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Smart Campus</h1>
+<p class="text-on-surface-variant text-xs opacity-60">V2.0.4</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-body-md text-body-md">Search</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-md text-body-md">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary border-r-4 border-primary rounded-r-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-body-md text-body-md">Admin</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-2 border-t border-white/5 pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-16 sticky top-0 z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm shadow-primary/5">
+<div class="md:hidden">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">CampusFlow</h1>
+</div>
+<div class="hidden md:flex flex-1 items-center">
+<div class="relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-white/10 rounded-lg pl-10 pr-4 py-2 focus:ring-1 focus:ring-primary focus:border-primary text-sm" placeholder="Search campus resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-white/5 rounded-full transition-all duration-200 Active: scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-white/5 rounded-full transition-all duration-200 Active: scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="hidden lg:block px-6 py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-lg shadow-primary/20 hover:opacity-90 transition-all">Book Now</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User profile photo" data-alt="A professional high-resolution headshot of a modern university student with a confident smile, wearing a stylish smart-casual blazer. The background is a soft-focus interior of a contemporary academic building with warm ambient light and glass architectural details, conveying a futuristic and successful persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS368HZma3DxYD5CSZ0mFd7jSny-HHL7wnQfE8AIcLumboV2ChePgpLjQbkl00BffFHPNezEkI4-ukPhWzI4vg6iuemfLKRnwZtrrEYrv7uZNxsNHo8obguCqGnN0qrw-0sAhcA8SXsiHwq3F8tv-0kVrb7AsbBpS-8ZhR3gqE7Qn0L4UbK9Ym8XPWa5nsvmBMfcoUpGex2-dje6_r9Sepks4ombhku0KFi1ZSkjdYEphRfZxczwfsZ1JgDcJHSlRCxExFajfT7eQc"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="p-margin-mobile md:p-margin-desktop space-y-8">
+<!-- Profile Header -->
+<div class="glass-card p-8 rounded-xl flex flex-col md:flex-row items-center md:items-end gap-8 overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="school">school</span>
+</div>
+<div class="relative">
+<div class="h-32 w-32 md:h-40 md:w-40 rounded-2xl overflow-hidden border-4 border-primary shadow-2xl">
+<img alt="User" class="w-full h-full object-cover" data-alt="A detailed, close-up photograph of a professional-grade student identification photo. The subject is a young adult with intelligent eyes and a friendly expression, captured against a clean, charcoal-grey architectural background with soft teal rim lighting that highlights their silhouette in a futuristic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChZ67TqZMnYYVaNuwtrEaMTdOvo9Ubpr3wlLJ24eRT2ug79LyjKuGiOgZhSyejP7L5Q2HQA2mL-DhzxdzjMDpW_LhzQK0EDXSyn-V3FpRy8NBWWRdO7AhzKyESgU9OI_HAfAhPbYTmOMeVNW1gn2YV0d0_ero9nxTLqeKgMGW2tEAnT4WJWxlQLhqHuu_IYWvqgQGln20kCt3jdncQXw7vmg4TBkREXq2gqTbmjhSVPvZmBZR7NWKULGJyvNN_QlzZrRYSo1pDSkP2"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-tertiary text-on-tertiary px-3 py-1 rounded-full font-label-md text-[10px] uppercase tracking-wider glow-emerald">Active</div>
+</div>
+<div class="flex-1 space-y-2 text-center md:text-left">
+<h2 class="font-display-lg text-display-lg text-on-surface">Alexander Vance</h2>
+<div class="flex flex-wrap justify-center md:justify-start items-center gap-4 text-on-surface-variant">
+<span class="flex items-center gap-1 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="id_card">id_card</span>
+                                USN: 2024-ARCH-772
+                            </span>
+<span class="w-1 h-1 bg-white/20 rounded-full"></span>
+<span class="flex items-center gap-1 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+                                North Campus, Hall A
+                            </span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 border border-white/10 hover:bg-white/5 rounded-lg font-label-md text-label-md transition-all">Edit Profile</button>
+<button class="px-6 py-3 bg-tertiary text-on-tertiary rounded-lg font-label-md text-label-md hover:bg-tertiary-fixed-dim transition-all shadow-lg shadow-tertiary/10">Message Admin</button>
+</div>
+</div>
+<!-- Statistics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="glass-card p-6 rounded-xl border-l-4 border-primary">
+<p class="text-on-surface-variant font-label-md text-label-md">Total Hours Booked</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-display-lg text-[32px] text-primary">142</span>
+<span class="text-tertiary text-xs">+12% this mo.</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl border-l-4 border-tertiary">
+<p class="text-on-surface-variant font-label-md text-label-md">Favorite Resource</p>
+<div class="mt-2">
+<span class="font-headline-md text-headline-md text-on-surface">Lab-04 Design</span>
+<p class="text-xs text-on-surface-variant mt-1">High-Performance Computing</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl">
+<p class="text-on-surface-variant font-label-md text-label-md">Upcoming Sessions</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-display-lg text-[32px] text-on-surface">3</span>
+<span class="text-on-surface-variant text-xs">Next in 2h</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl">
+<p class="text-on-surface-variant font-label-md text-label-md">Campus Reputation</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-white/20" data-icon="star">star</span>
+</div>
+<span class="font-label-md text-label-md">4.8</span>
+</div>
+</div>
+</div>
+<!-- Main Content Layout (Bento Grid Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Personal Details & Account Settings -->
+<div class="lg:col-span-8 space-y-8">
+<section class="glass-card p-8 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md">Personal Details</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="edit">edit</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">Full Name</label>
+<p class="font-body-md text-body-md border-b border-white/5 pb-2">Alexander Vance</p>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">Academic Email</label>
+<p class="font-body-md text-body-md border-b border-white/5 pb-2">a.vance@campusflow.edu</p>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">Major</label>
+<p class="font-body-md text-body-md border-b border-white/5 pb-2">Architecture &amp; Computational Design</p>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-widest">Year of Study</label>
+<p class="font-body-md text-body-md border-b border-white/5 pb-2">Graduate - Final Year</p>
+</div>
+</div>
+</section>
+<section class="glass-card p-8 rounded-xl">
+<h3 class="font-headline-md text-headline-md mb-6">Account Settings</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5 hover:border-primary/20 transition-all cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Security &amp; Password</p>
+<p class="text-xs text-on-surface-variant">Last updated 3 months ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5 hover:border-primary/20 transition-all cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-secondary/10 text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Notification Preferences</p>
+<p class="text-xs text-on-surface-variant">Email and Push enabled</p>
+</div>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-error/5 rounded-lg border border-error/10 hover:bg-error/10 transition-all cursor-pointer group">
+<div class="flex items-center gap-4 text-error">
+<div class="p-2 bg-error/10 rounded-lg">
+<span class="material-symbols-outlined" data-icon="delete_forever">delete_forever</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Deactivate Account</p>
+<p class="text-xs opacity-60">Permanently delete your profile and data</p>
+</div>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform text-error" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Saved Resources -->
+<div class="lg:col-span-4">
+<section class="glass-card p-6 rounded-xl h-full">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md">Saved Resources</h3>
+<a class="text-primary text-xs font-label-md hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-4">
+<div class="group relative overflow-hidden rounded-lg aspect-video glass-card">
+<img alt="Resource" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="A wide-angle shot of a sleek, futuristic architectural design studio at night. Large floor-to-ceiling windows reveal a cityscape under a navy sky, while the interior is filled with holographic displays, minimalist ergonomic desks, and soft green accent lighting, creating an atmosphere of advanced creativity and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANtejJGkRBnMIPZ0HHpdvPUrrfzbkUy21NN2E6Jtna5RDFnDc_RmGihRAMvAPa1LPA43Y4L-KqFqdMgWJ3B3qD3aDke_d1yxUVpF15GRwpjw56bCoNT-DmFZChtdEA2kJB2-T3w0N3GoDFxJjRpIN9glgLp1RzSifEZbgdQhlPC6b_tpx-xCbZO17jy8k2tuc0YPSBEIRBBrz30sZkb5twtLCY0EWipN5LhKiAgfDTcK9nX0jLKYrKA3i7SVvMQPaMibLU90XCX5jz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="font-label-md text-label-md">Studio 7 - VR Suite</p>
+<p class="text-[10px] text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            Available Now
+                                        </p>
+</div>
+<button class="absolute top-2 right-2 p-1.5 bg-surface/80 backdrop-blur rounded-full text-primary shadow-lg">
+<span class="material-symbols-outlined text-[18px]" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-video glass-card">
+<img alt="Resource" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="A high-tech fabrication laboratory showcasing a row of industrial 3D printers in action. The room is clean and modern, with slate blue walls and neon emerald glowing tubes. The lighting is dramatic and focused, highlighting the precise mechanical movements of the machines in a futuristic academic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2cRFQ1duvjo2Qt8ZHqF0G9Hq20Q6SlJaKfe9MT0zrkgqodKf1qioSoDqXJdyvyuPPZiVdEGTDreDX0h8T80-88YE0JrjsOuP1MW39AiDO_G78A6RSa72THDXkAX0vPsdW59n4BTxnWz_DOJnlKqVIkD7_2kKX1C9Vbjb4Xk3vjD-GLrHGSReDWS98S3GT7VJAUWC8wPp9Jv2WMPZod_nF3iFkxQefe-EXzOkQrV3x9KrHG1xcPLHtHd7ONrqKrAeXJ6nPEJwCNuBe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="font-label-md text-label-md">Rapid Proto Lab B</p>
+<p class="text-[10px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="schedule">schedule</span>
+                                            Waitlist: 15 mins
+                                        </p>
+</div>
+<button class="absolute top-2 right-2 p-1.5 bg-surface/80 backdrop-blur rounded-full text-primary shadow-lg">
+<span class="material-symbols-outlined text-[18px]" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<div class="group relative overflow-hidden rounded-lg aspect-video glass-card">
+<img alt="Resource" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="An expansive, multi-level futuristic library interior featuring floating study pods and digital book terminals. The architecture uses organic curves and soft white materials, contrasted with deep navy shadows and warm golden pin-lights, evoking a serene and highly efficient environment for focused learning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA44BmjVu0Hr5SkWQ0SVH8U9MqNKREfmzAXpH6rS17tnmE5n9SXMajBMrKtrmcQkP3ozvry_KZdg2r_RsQzLcAkGw0sTfwXXO5ABAEjzvjBkIhxe50n3liBpo1zTpOiusEIdTA3Tkj5Ty-HLAR8WBFD54WBdtg-EVDw4z7_NDdE2GowZ_iVxThAsTmUBZXSH_6kfz_H3tX0_I2ZyK22X0I0rjhuhdBmqUbNKs4MY58atK_tnsc9wuHEkdJROLqQWA_w-zVSIFmHcCaY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="font-label-md text-label-md">Zen Study Pod 04</p>
+<p class="text-[10px] text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            Available Now
+                                        </p>
+</div>
+<button class="absolute top-2 right-2 p-1.5 bg-surface/80 backdrop-blur rounded-full text-primary shadow-lg">
+<span class="material-symbols-outlined text-[18px]" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</div>
+<!-- Mobile Bottom NavBar (Shared Component Logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-xl border-t border-white/10 flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px]">Search</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px]">Settings</span>
+</button>
+</nav>
+</body></html>

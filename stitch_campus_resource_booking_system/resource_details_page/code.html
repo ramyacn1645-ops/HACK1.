@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #121316;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(175, 200, 240, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(102, 221, 139, 0.05) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(31, 32, 34, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .glass-card-stroke {
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%) border-box;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface": "#121316",
+                      "secondary-container": "#394857",
+                      "surface-container-high": "#292a2c",
+                      "surface-container": "#1f2022",
+                      "on-secondary-fixed": "#0d1d2a",
+                      "surface-variant": "#343537",
+                      "on-tertiary": "#003919",
+                      "on-error": "#690005",
+                      "inverse-primary": "#476083",
+                      "surface-bright": "#38393c",
+                      "tertiary-container": "#00250e",
+                      "on-surface-variant": "#c4c6cf",
+                      "on-secondary": "#223240",
+                      "surface-tint": "#afc8f0",
+                      "on-primary-fixed": "#001c3a",
+                      "primary-container": "#001f3f",
+                      "tertiary-fixed": "#83fba5",
+                      "tertiary-fixed-dim": "#66dd8b",
+                      "surface-container-highest": "#343537",
+                      "secondary": "#b8c8da",
+                      "secondary-fixed": "#d4e4f6",
+                      "primary-fixed-dim": "#afc8f0",
+                      "outline-variant": "#43474e",
+                      "surface-container-low": "#1a1c1e",
+                      "on-secondary-container": "#a7b7c8",
+                      "on-tertiary-fixed": "#00210c",
+                      "on-background": "#e3e2e5",
+                      "outline": "#8e9198",
+                      "on-secondary-fixed-variant": "#394857",
+                      "surface-dim": "#121316",
+                      "on-surface": "#e3e2e5",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0d0e11",
+                      "error-container": "#93000a",
+                      "background": "#121316",
+                      "tertiary": "#66dd8b",
+                      "on-tertiary-fixed-variant": "#005227",
+                      "on-tertiary-container": "#119b50",
+                      "inverse-on-surface": "#2f3033",
+                      "inverse-surface": "#e3e2e5",
+                      "on-error-container": "#ffdad6",
+                      "on-primary": "#163152",
+                      "secondary-fixed-dim": "#b8c8da",
+                      "primary": "#afc8f0",
+                      "on-primary-container": "#6f88ad",
+                      "primary-fixed": "#d4e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid-columns": "12",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "margin-tablet": "24px",
+                      "container-max": "1440px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Montserrat"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Montserrat"],
+                      "display-lg": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Montserrat"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-surface-container/30 backdrop-blur-2xl border-r border-white/5 py-8 gap-4 shadow-xl shadow-surface-container-lowest/50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Smart Campus</h1>
+<p class="text-on-surface-variant font-label-md text-label-md opacity-60">V2.0.4</p>
+</div>
+<nav class="flex-grow flex flex-col gap-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors duration-200 hover:translate-x-1 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 bg-primary/10 text-primary border-r-4 border-primary rounded-r-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">search</span>
+<span>Search</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors duration-200 hover:translate-x-1 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors duration-200 hover:translate-x-1 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors duration-200 hover:translate-x-1 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span>Admin</span>
+</a>
+</nav>
+<div class="px-6 mt-auto flex flex-col gap-1">
+<a class="flex items-center gap-3 py-3 text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col min-w-0">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm shadow-primary/5">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">CampusFlow</span>
+<div class="relative ml-8 hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-variant/40 border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-white/5 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-white/5 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+                        Book Now
+                    </button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="User profile photo" data-alt="A professional headshot of a university student in a bright, modern studio. The lighting is soft and even, highlighting a confident expression. The background is a clean, minimalist off-white, reflecting the futuristic academic aesthetic with high-end digital clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW8cKyUjOkUNuvYw5X6y7LdKmUN7m-ZVnvaNybRqycdUyb16IKcRGJy-zhfp_B-uJUcEU1iF6OUU-VVlEL4wHD0xLYPa8evBCy2rbAoBD5faLYtGx4c2rh49wW7T1q-Up1dqqSP44Ws2pMd8lgMa3JnqQQQ51TP4mjitlm2Wv_KBKdlOvIJVb1pSmBC4Yk4FDnU7xtScYyH9XBK18hvwW5lZRlqkxTT6-BuBCiH87eAjct6Ajr2d8eCU2Aci2W4_AR01px4gM31H54"/>
+</div>
+</div>
+</header>
+<div class="p-margin-desktop space-y-8 max-w-container-max mx-auto w-full">
+<!-- Bento Layout for Resource Details -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Hero Image Card -->
+<div class="col-span-12 lg:col-span-8 h-[450px] relative rounded-xl overflow-hidden glass-card-stroke group">
+<img alt="Innovation Hub Hub-101" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A wide-angle interior shot of a futuristic university collaborative lab space. Sleek white tables with integrated touchscreens are surrounded by ergonomic chairs. Large glass windows reveal a blurred green campus at twilight. The room is illuminated by ambient emerald and navy recessed lighting, creating a calm yet productive high-tech atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyu8Pn0ewWLEboEgtLDa3Cl6cQD3KZJrmzwqy8BCcgGQ62WLO0a46ekTH3feaLOWubDFbI8fn5kh80ELsjPAfXDXeEYsiKpbf9z9AuFU8lbN1Tq23L9sHrgvY_HI8-zmdIlA0k55_oUTn_ibgBM47ItaztSmRxB5O4YnKDppOqz5MuqgWsonhvwitqgR5rDkLR2x8Vduz9huH6ulk2dikaOfsrm_-T7s3X7eCMxN2kwsxVyBZ5Qatt6e7dcA_ILIg3Jka3z761UCnh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-8 left-8">
+<div class="flex gap-2 mb-4">
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-md">Available Now</span>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-md">Level 4</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-white mb-2">Innovation Hub: Collaborative Zone A</h2>
+<p class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Building 4, Science &amp; Technology Quad
+                            </p>
+</div>
+</div>
+<!-- Details & Capacity Card -->
+<div class="col-span-12 lg:col-span-4 glass-panel p-8 rounded-xl flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Resource Specs</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Capacity</p>
+<p class="font-headline-md text-on-surface">12 Persons</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">wifi</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Connectivity</p>
+<p class="font-headline-md text-on-surface">Wi-Fi 6E / 1Gbps</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">videocam</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Media</p>
+<p class="font-headline-md text-on-surface">4K VC System</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-white/5 rounded-lg border border-white/5">
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                A high-performance collaborative environment designed for rapid prototyping and team workshops. Includes writeable glass walls and dynamic lighting control.
+                            </p>
+</div>
+</div>
+<!-- Booking & Calendar Section -->
+<div class="col-span-12 lg:col-span-8 glass-panel p-8 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-md text-headline-md text-white">Availability Calendar</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-white/5 rounded-lg transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<span class="font-label-md text-label-md px-4 flex items-center">October 2023</span>
+<button class="p-2 hover:bg-white/5 rounded-lg transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-4 mb-8">
+<!-- Calendar Header -->
+<div class="text-center text-xs font-bold text-on-surface-variant opacity-50">MON</div>
+<div class="text-center text-xs font-bold text-on-surface-variant opacity-50">TUE</div>
+<div class="text-center text-xs font-bold text-on-surface-variant opacity-50">WED</div>
+<div class="text-center text-xs font-bold text-on-surface-variant opacity-50">THU</div>
+<div class="text-center text-xs font-bold text-on-surface-variant opacity-50">FRI</div>
+<div class="text-center text-xs font-bold text-on-surface-variant opacity-50">SAT</div>
+<div class="text-center text-xs font-bold text-on-surface-variant opacity-50">SUN</div>
+<!-- Calendar Days -->
+<div class="aspect-square flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors cursor-pointer text-on-surface-variant">25</div>
+<div class="aspect-square flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors cursor-pointer text-on-surface-variant">26</div>
+<div class="aspect-square flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors cursor-pointer text-on-surface-variant">27</div>
+<div class="aspect-square flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors cursor-pointer text-on-surface-variant">28</div>
+<div class="aspect-square flex items-center justify-center rounded-lg bg-primary/20 text-primary border border-primary/40 font-bold cursor-pointer">29</div>
+<div class="aspect-square flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors cursor-pointer">30</div>
+<div class="aspect-square flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors cursor-pointer">31</div>
+</div>
+<div>
+<p class="font-label-md text-label-md mb-4 text-on-surface-variant">Select Time Slot</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<button class="py-3 px-4 rounded-lg bg-surface-variant/40 border border-white/5 hover:border-primary/50 transition-all text-sm font-medium">09:00 - 10:30</button>
+<button class="py-3 px-4 rounded-lg bg-tertiary/20 border border-tertiary/50 text-tertiary text-sm font-bold shadow-[0_0_15px_rgba(102,221,139,0.15)]">11:00 - 12:30</button>
+<button class="py-3 px-4 rounded-lg bg-surface-variant/40 border border-white/5 hover:border-primary/50 transition-all text-sm font-medium">13:00 - 14:30</button>
+<button class="py-3 px-4 rounded-lg bg-surface-variant/40 border border-white/5 hover:border-primary/50 transition-all text-sm font-medium">15:00 - 16:30</button>
+</div>
+</div>
+</div>
+<!-- Booking Summary & CTA -->
+<div class="col-span-12 lg:col-span-4 glass-panel p-8 rounded-xl flex flex-col">
+<h3 class="font-headline-md text-headline-md text-white mb-6">Reservation Summary</h3>
+<div class="flex-grow space-y-4">
+<div class="flex justify-between items-center py-3 border-b border-white/5">
+<span class="text-on-surface-variant">Date</span>
+<span class="font-bold">Oct 29, 2023</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-white/5">
+<span class="text-on-surface-variant">Time</span>
+<span class="font-bold">11:00 - 12:30</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-white/5">
+<span class="text-on-surface-variant">Duration</span>
+<span class="font-bold">90 Minutes</span>
+</div>
+<div class="flex justify-between items-center py-3">
+<span class="text-on-surface-variant">Guest Limit</span>
+<span class="font-bold">12 Total</span>
+</div>
+</div>
+<div class="mt-8">
+<button class="w-full bg-tertiary text-on-tertiary py-4 rounded-xl font-headline-md text-headline-md hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-tertiary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">bolt</span>
+                                Confirm Booking
+                            </button>
+<p class="text-center text-xs text-on-surface-variant mt-4 opacity-50">Free cancellation up to 2 hours before.</p>
+</div>
+</div>
+<!-- Reviews & Ratings -->
+<div class="col-span-12 glass-panel p-8 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-6">
+<h3 class="font-headline-md text-headline-md text-white">Member Reviews</h3>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-on-surface-variant opacity-50">(128 reviews)</span>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">Write a review</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Review 1 -->
+<div class="space-y-4 p-6 rounded-lg bg-white/5 border border-white/5">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="text-sm font-bold">EM</span>
+</div>
+<div>
+<p class="font-bold">Elena Martinez</p>
+<p class="text-xs text-on-surface-variant">Graduate Researcher</p>
+</div>
+</div>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant italic leading-relaxed">"The air quality and lighting in Zone A are incredible. It really helps during those long dissertation sprints. Best workspace on campus."</p>
+</div>
+<!-- Review 2 -->
+<div class="space-y-4 p-6 rounded-lg bg-white/5 border border-white/5">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="text-sm font-bold">JC</span>
+</div>
+<div>
+<p class="font-bold">Jordan Chen</p>
+<p class="text-xs text-on-surface-variant">Engineering Student</p>
+</div>
+</div>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-on-surface-variant text-xs">star</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant italic leading-relaxed">"Great screens for group presentations. Only downside is it's so popular it's hard to book for prime times. Highly recommend."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
